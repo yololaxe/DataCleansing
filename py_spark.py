@@ -5,13 +5,13 @@ spark = SparkSession.builder \
     .appName("OpenFoodFacts Data Cleansing") \
     .config("spark.executor.memory", "4g") \
     .config("spark.driver.memory", "4g") \
-    .config("spark.local.dir", "E:\EPSI\DataCleansing\spark-temp") \
+    .config("spark.local.dir", "G:/proj/DataCleansing/spark-temp") \
     .config("spark.mongodb.input.uri", "mongodb://localhost:27017/openfoodfacts.products") \
     .getOrCreate()
 
 
 # Charger les données depuis un fichier CSV
-data = spark.read.csv("CSV\openfoodfacts.csv", header=True, inferSchema=True, sep="\t")
+data = spark.read.csv("CSV/openfoodfacts.csv", header=True, inferSchema=True, sep="\t")
 
 data = data.limit(1000)  # Charger uniquement 1000 lignes pour les tests
 
